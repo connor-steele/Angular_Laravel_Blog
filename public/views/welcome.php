@@ -1,6 +1,6 @@
 <!-- app/views/index.php -->
 
-<!doctype html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Laravel and Angular Comment System</title>
+<!doctype html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Laravel and Angular Single Page Blog</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> <!-- load bootstrap via cdn -->
@@ -23,53 +23,44 @@
 
 </head> 
 <!-- declare our angular app and controller --> 
-<body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-8 col-md-offset-2">
+<body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-14">
 
     <!-- PAGE TITLE =============================================== -->
     <div class="page-header">
-        <h2>Laravel and Angular Single Page Application</h2>
-        <h4>Commenting System</h4>
+        <h2>Laravel and Angular Single Page Blog</h2>
+        <h4>Advanced Interview Material</h4>
     </div>
-
-    <!-- NEW COMMENT FORM =============================================== -->
-    <form ng-submit="submitComment()"> <!-- ng-submit will disable the default form action and use our function -->
-
-        <!-- TITLE -->
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" name="title" ng-model="commentData.title" placeholder="Title">
-        </div>
-
-        <!-- COMMENT TEXT -->
-        <div class="form-group">
-            <input type="text" class="form-control input-lg" name="comment" ng-model="commentData.body" placeholder="Say what you have to say">
-        </div>
-
-        <!-- AUTHOR -->
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="Name">
-        </div>
-        <!-- DATE -->
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.date" placeholder="date">
-        </div>
-
-        <!-- SUBMIT BUTTON -->
-        <div class="form-group text-right">   
-            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-        </div>
-
-
-    </form>
-
+<div class="col-md-4">
+        <!-- NEW COMMENT FORM =============================================== -->
+        <form ng-submit="submitComment()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" class="form-control input-lg" name="title" ng-model="commentData.title" placeholder="greatTitle">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Body</label>
+                <input type="text" class="form-control input" name="comment" ng-model="commentData.body" placeholder="Write what's on your mind!">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Author</label>
+                 <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="">
+            </div>
+                <!-- SUBMIT BUTTON -->
+                <div class="form-group text-right">   
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+        </form>
+</div>
     <!-- LOADING ICON =============================================== -->
     <!-- show loading icon if the loading variable is set to true -->
     <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
 
-    
+<div class="col-md-8">
     <!-- <div class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index"> -->
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th></th>
             <th>ID</th>
             <th>Title</th>
             <th>Body</th>
@@ -79,27 +70,80 @@
         </tr>
     </thead>
     <tbody>
+
         <tr class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index">
+            <td>
+                <div ng-controller="ChckbxsCtrl">
+                    <div ng-repeat="chk in chkbxs">
+                        <input type="checkbox" ng-model="chk.val" ng-click="addToCart(comment)"/>
+                        <!-- <td><button type="button" ng-click="addToCart(comment)">Add to cart</button></td> -->
+                        <label>{{chk.label}}</label>
+                    </div>
+                    <div class="delete_these" ng-show="deleteBatch()">
+                        {{ comment.id }}
+                    </div>
+
+
+                </div>
+            </td>
             <td>{{ comment.id }}</td>
             <td>{{ comment.title }}</td>
             <td>{{ comment.body }}</td>
             <td>{{ comment.author }}</td>
-            <td>{{ comment. }}</td>
-            <td>
+            <td>{{ comment.date }}</td>
+            <td> 
             <button data-toggle="modal" ng-click="edit(value.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
             <button class="btn btn-danger" ng-click="deleteComment(comment.id)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
-    <!-- THE COMMENTS =============================================== -->
-    <!-- hide these comments if the loading variable is true -->
-<!-- 
-        <p>{{ comment.body }}</p>
-        <h3>by {{ comment.author }}</h3>
+     
+<!--         <table border="1" class="mytable">
+        <tr>
+        <td>ID</td>/
+           <td>Title</td>
+           <td>Body</td>
+           <td>Author</td>
+           <td>Date</td>
+           <td>Add to cart</td>
+        </tr>
+        <tr ng-repeat="comment in comments track by $index">
+                  What should be here
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.title }}</td>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment.date }}</td>
+<td><button type="button" ng-click="addToCart(comment)">Add to cart</button></td>
+        </tr>
+       </table> -->
+     <h2>Batch Delete</h2>
+        <div style="border: 1px solid blue;">
+        </div>
+        <table border="1" class="table table-bordered">
+        <tr>
+        <td>ID</td>/
+           <td>Title</td>
+           <td>Body</td>
+           <td>Author</td>
+           <td>Date</td>
+           <td>Add to cart</td>
+        </tr>
 
-        <p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p> -->
-    <!-- </div> -->
+        <tr ng-repeat="comment in myCartItems track by $index">
+
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.title }}</td>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment.date }}</td>
+        </tr>
+       </table>
+        <button class="btn btn-danger" ng-click="deleteAllSelectedComments(myCartItems)">BATCH-DELETE</button>
+</div>
+
+           
 
 </div> 
 </body> 
