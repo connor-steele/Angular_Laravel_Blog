@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use App\Comment;
 class CommentTableSeeder extends Seeder 
 {
 
@@ -13,17 +14,23 @@ class CommentTableSeeder extends Seeder
 
 		Comment::create(array(
 			'author' => 'Chris Sevilleja',
-			'text' => 'Look I am a test comment.'
+			'body' => 'Look I am a test comment.',
+			'title' => 'Hey there, check out this nice test!',
+			'date' => date("Y/m/d")
 		));
 
 		Comment::create(array(
 			'author' => 'Nick Cerminara',
-			'text' => 'This is going to be super crazy.'
+			'body' => 'This is going to be super crazy.',
+			'title' => 'Hey there, check out this nice test!',
+			'date' => date("Y/m/d")
 		));
 
 		Comment::create(array(
 			'author' => 'Holly Lloyd',
-			'text' => 'I am a master of Laravel and Angular.'
+			'body' => 'I am a master of Laravel and Angular.',
+			'title' => "My favorite sauce is Jumpin n' Johnny's Hot Sauce",
+			'date' => date("Y/m/d")
 		));
 	}
 
