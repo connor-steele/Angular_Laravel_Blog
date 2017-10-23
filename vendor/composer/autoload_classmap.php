@@ -64,6 +64,7 @@ return array(
     'Barryvdh\\Debugbar\\Twig\\Extension\\Stopwatch' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/Extension/Stopwatch.php',
     'Barryvdh\\Debugbar\\Twig\\Node\\StopwatchNode' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/Node/StopwatchNode.php',
     'Barryvdh\\Debugbar\\Twig\\TokenParser\\StopwatchTokenParser' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/StopwatchTokenParser.php',
+    'BlogPostSeeder' => $baseDir . '/database/seeds/BlogPostSeeder.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',

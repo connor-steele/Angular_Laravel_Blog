@@ -1,6 +1,6 @@
 <!-- app/views/index.php -->
 
-<!doctype html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Laravel and Angular Comment System</title>
+<!doctype html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Laravel and Angular blogPost System</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> <!-- load bootstrap via cdn -->
@@ -23,16 +23,16 @@
 
 </head> 
 <!-- declare our angular app and controller --> 
-<body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-8 col-md-offset-2">
+<body class="container" ng-app="blogPostApp" ng-controller="mainController"> <div class="col-md-8 col-md-offset-2">
 
     <!-- PAGE TITLE =============================================== -->
     <div class="page-header">
         <h2>Laravel and Angular Single Page Application</h2>
-        <h4>Commenting System</h4>
+        <h4>blogPosting System</h4>
     </div>
 
     <!-- NEW COMMENT FORM =============================================== -->
-    <form ng-submit="submitComment()"> <!-- ng-submit will disable the default form action and use our function -->
+    <form ng-submit="submitblogPost()"> <!-- ng-submit will disable the default form action and use our function -->
 
         <!-- AUTHOR -->
         <div class="form-group">
@@ -59,8 +59,7 @@
     <div class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index">
         <p>{{ comment.text }}</p>
         <h3>by {{ comment.author }}</h3>
-
-        <p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p>
+        <p><a href="#" ng-click="deleteblogPost(comment.id)" class="text-muted">Delete</a></p>
     </div>
 
 </div> 

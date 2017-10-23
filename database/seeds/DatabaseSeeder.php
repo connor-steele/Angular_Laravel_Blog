@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder {
     public function run()
     {
         Eloquent::unguard();
-        $this->call('CommentTableSeeder');
-        $this->command->info('Comment table seeded.');
+        $this->call('BlogPostSeeder');
+        $this->command->info('Blog table seeded.');
     }
 
 

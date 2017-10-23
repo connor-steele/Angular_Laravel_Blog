@@ -13,7 +13,15 @@ class BlogPosts extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('blogposts', function(Blueprint $table)
+        {
+
+            $table->increments('id');
+            $table->string('title');
+            $table->string('body');
+            $table->string('author');
+            $table->date('date');
+        });
     }
 
     /**
