@@ -65,14 +65,41 @@
     <!-- show loading icon if the loading variable is set to true -->
     <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
 
+    
+    <!-- <div class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index"> -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th width="220px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index">
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.title }}</td>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment. }}</td>
+            <td>
+            <button data-toggle="modal" ng-click="edit(value.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
+            <button class="btn btn-danger"><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
     <!-- THE COMMENTS =============================================== -->
     <!-- hide these comments if the loading variable is true -->
-    <div class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index">
+<!-- 
         <p>{{ comment.body }}</p>
         <h3>by {{ comment.author }}</h3>
 
-        <p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p>
-    </div>
+        <p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p> -->
+    <!-- </div> -->
 
 </div> 
 </body> 
