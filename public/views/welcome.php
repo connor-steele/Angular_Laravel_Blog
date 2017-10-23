@@ -34,20 +34,31 @@
     <!-- NEW COMMENT FORM =============================================== -->
     <form ng-submit="submitComment()"> <!-- ng-submit will disable the default form action and use our function -->
 
-        <!-- AUTHOR -->
+        <!-- TITLE -->
         <div class="form-group">
-            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="Name">
+            <input type="text" class="form-control input-sm" name="title" ng-model="commentData.title" placeholder="Title">
         </div>
 
         <!-- COMMENT TEXT -->
         <div class="form-group">
-            <input type="text" class="form-control input-lg" name="comment" ng-model="commentData.text" placeholder="Say what you have to say">
+            <input type="text" class="form-control input-lg" name="comment" ng-model="commentData.body" placeholder="Say what you have to say">
+        </div>
+
+        <!-- AUTHOR -->
+        <div class="form-group">
+            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="Name">
+        </div>
+        <!-- DATE -->
+        <div class="form-group">
+            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.date" placeholder="date">
         </div>
 
         <!-- SUBMIT BUTTON -->
         <div class="form-group text-right">   
             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
         </div>
+
+
     </form>
 
     <!-- LOADING ICON =============================================== -->
@@ -57,7 +68,7 @@
     <!-- THE COMMENTS =============================================== -->
     <!-- hide these comments if the loading variable is true -->
     <div class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index">
-        <p>{{ comment.text }}</p>
+        <p>{{ comment.body }}</p>
         <h3>by {{ comment.author }}</h3>
 
         <p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p>

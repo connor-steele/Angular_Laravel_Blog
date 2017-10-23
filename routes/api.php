@@ -24,6 +24,9 @@ Route::middleware('bindings')->get('/comment', function(Request $request){
 Route::middleware('bindings')->post('/comment', function(Request $request){
     return $request->comment();
 });
+Route::middleware('bindings')->delete('/comment', function(Request $request){
+    return $request->comment();
+});
 
 
 // =============================================

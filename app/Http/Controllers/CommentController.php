@@ -23,7 +23,9 @@ class CommentController extends Controller {
 	{
 		Comment::create(array(
 			'author' => Request::get('author'),
-			'text' =>  Request::get('text')
+			'body' =>  Request::get('body'), 
+			'title' =>  Request::get('title'), 
+			'date' =>  Request::get('date') 
 		));
 
 		return \Response::json(array('success' => true));
@@ -50,7 +52,7 @@ class CommentController extends Controller {
 	{
 		Comment::destroy($id);
 
-		return Response::json(array('success' => true));
+		return \Response::json(array('success' => true));
 	}
 
 }
