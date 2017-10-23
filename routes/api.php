@@ -17,16 +17,18 @@ use App\Article;
 //     return $request->user();
 // });
 
-Route::middleware('bindings')->get('/comment', function(Request $request){
-    return $request->comment();
-});
+// Route::middleware('bindings')->get('/comment', function(Request $request){
+//     return $request->comment();
+// });
 
-Route::middleware('bindings')->post('/comment', function(Request $request){
-    return $request->comment();
-});
-Route::middleware('bindings')->delete('/comment', function(Request $request){
-    return $request->comment();
-});
+// Route::middleware('bindings')->post('/comment', function(Request $request){
+//     return $request->comment();
+// });
+// Route::middleware('bindings')->delete('/comment', function(Request $request){
+//     return $request->comment();
+// });
+
+
 
 
 // =============================================
@@ -35,6 +37,21 @@ Route::middleware('bindings')->delete('/comment', function(Request $request){
 Route::get('/', function()
 {
     return View::make('index');
+});
+
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('comments', 'CommentController');
+});
+
+// Templates
+Route::group(array('prefix'=>'/templates/'),function(){
+    Route::get('{template}', array( function($template)
+    {
+        $template = str_replace(".html","",$template);
+        View::addExtension('html','php');
+        return View::make('templates.'.$template);
+    }));
 });
 
 

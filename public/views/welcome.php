@@ -23,49 +23,39 @@
 
 </head> 
 <!-- declare our angular app and controller --> 
-<body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-8 col-md-offset-2">
+<body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-14">
 
     <!-- PAGE TITLE =============================================== -->
     <div class="page-header">
         <h2>Laravel and Angular Single Page Application</h2>
         <h4>Commenting System</h4>
     </div>
-
-    <!-- NEW COMMENT FORM =============================================== -->
-    <form ng-submit="submitComment()"> <!-- ng-submit will disable the default form action and use our function -->
-
-        <!-- TITLE -->
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" name="title" ng-model="commentData.title" placeholder="Title">
-        </div>
-
-        <!-- COMMENT TEXT -->
-        <div class="form-group">
-            <input type="text" class="form-control input-lg" name="comment" ng-model="commentData.body" placeholder="Say what you have to say">
-        </div>
-
-        <!-- AUTHOR -->
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="Name">
-        </div>
-        <!-- DATE -->
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.date" placeholder="date">
-        </div>
-
-        <!-- SUBMIT BUTTON -->
-        <div class="form-group text-right">   
-            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-        </div>
-
-
-    </form>
-
+<div class="col-md-4">
+        <!-- NEW COMMENT FORM =============================================== -->
+        <form ng-submit="submitComment()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" class="form-control input-lg" name="title" ng-model="commentData.title" placeholder="greatTitle">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Body</label>
+                <input type="text" class="form-control input" name="comment" ng-model="commentData.body" placeholder="Write what's on your mind!">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Author</label>
+                 <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="">
+            </div>
+                <!-- SUBMIT BUTTON -->
+                <div class="form-group text-right">   
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+        </form>
+</div>
     <!-- LOADING ICON =============================================== -->
     <!-- show loading icon if the loading variable is set to true -->
     <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
 
-    
+<div class="col-md-8">
     <!-- <div class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index"> -->
 <table class="table table-bordered">
     <thead>
@@ -92,6 +82,7 @@
         </tr>
     </tbody>
 </table>
+</div>
     <!-- THE COMMENTS =============================================== -->
     <!-- hide these comments if the loading variable is true -->
 <!-- 
