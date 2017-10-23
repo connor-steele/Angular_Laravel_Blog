@@ -1,6 +1,6 @@
 <!-- app/views/index.php -->
 
-<!doctype html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Laravel and Angular Comment System</title>
+<!doctype html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Laravel and Angular Single Page Blog</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> <!-- load bootstrap via cdn -->
@@ -27,8 +27,8 @@
 
     <!-- PAGE TITLE =============================================== -->
     <div class="page-header">
-        <h2>Laravel and Angular Single Page Application</h2>
-        <h4>Commenting System</h4>
+        <h2>Laravel and Angular Single Page Blog</h2>
+        <h4>Advanced Interview Material</h4>
     </div>
 <div class="col-md-4">
         <!-- NEW COMMENT FORM =============================================== -->
@@ -60,6 +60,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th></th>
             <th>ID</th>
             <th>Title</th>
             <th>Body</th>
@@ -69,28 +70,80 @@
         </tr>
     </thead>
     <tbody>
+
         <tr class="comment" ng-hide="loading" ng-repeat="comment in comments track by $index">
+            <td>
+                <div ng-controller="ChckbxsCtrl">
+                    <div ng-repeat="chk in chkbxs">
+                        <input type="checkbox" ng-model="chk.val" ng-click="addToCart(comment)"/>
+                        <!-- <td><button type="button" ng-click="addToCart(comment)">Add to cart</button></td> -->
+                        <label>{{chk.label}}</label>
+                    </div>
+                    <div class="delete_these" ng-show="deleteBatch()">
+                        {{ comment.id }}
+                    </div>
+
+
+                </div>
+            </td>
             <td>{{ comment.id }}</td>
             <td>{{ comment.title }}</td>
             <td>{{ comment.body }}</td>
             <td>{{ comment.author }}</td>
-            <td>{{ comment. }}</td>
-            <td>
+            <td>{{ comment.date }}</td>
+            <td> 
             <button data-toggle="modal" ng-click="edit(value.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
             <button class="btn btn-danger" ng-click="deleteComment(comment.id)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
-</div>
-    <!-- THE COMMENTS =============================================== -->
-    <!-- hide these comments if the loading variable is true -->
-<!-- 
-        <p>{{ comment.body }}</p>
-        <h3>by {{ comment.author }}</h3>
+     
+<!--         <table border="1" class="mytable">
+        <tr>
+        <td>ID</td>/
+           <td>Title</td>
+           <td>Body</td>
+           <td>Author</td>
+           <td>Date</td>
+           <td>Add to cart</td>
+        </tr>
+        <tr ng-repeat="comment in comments track by $index">
+                  What should be here
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.title }}</td>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment.date }}</td>
+<td><button type="button" ng-click="addToCart(comment)">Add to cart</button></td>
+        </tr>
+       </table> -->
+     <h2>Batch Delete</h2>
+        <div style="border: 1px solid blue;">
+        </div>
+        <table border="1" class="table table-bordered">
+        <tr>
+        <td>ID</td>/
+           <td>Title</td>
+           <td>Body</td>
+           <td>Author</td>
+           <td>Date</td>
+           <td>Add to cart</td>
+        </tr>
 
-        <p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p> -->
-    <!-- </div> -->
+        <tr ng-repeat="comment in myCartItems track by $index">
+
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.title }}</td>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment.date }}</td>
+        </tr>
+       </table>
+        <button class="btn btn-danger" ng-click="deleteAllSelectedComments(myCartItems)">BATCH-DELETE</button>
+</div>
+
+           
 
 </div> 
 </body> 
