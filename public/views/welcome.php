@@ -87,7 +87,7 @@
             <td>{{ comment. }}</td>
             <td>
             <button data-toggle="modal" ng-click="edit(value.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
-            <button class="btn btn-danger"><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></button>
+            <button class="btn btn-danger" ng-click="deleteComment(comment.id)">Delete</button>
             </td>
         </tr>
     </tbody>
