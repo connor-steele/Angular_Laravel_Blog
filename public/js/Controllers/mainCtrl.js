@@ -14,6 +14,27 @@ angular.module('mainCtrl', [])
                 $scope.loading = false;
             });
 
+        // function to handle submitting the form
+        $scope.updateComment = function(id) {
+            $scope.loading = true;
+            // save the comment. pass in comment data from the form
+            Comment.put($scope.commentData)
+                .success(function(data) {
+                    $scope.commentData = {};
+                    // if successful, we'll need to refresh the comment list
+                    Comment.get()
+                        .success(function(getData) {
+                         
+                            $scope.comments = getData;
+                            $scope.loading = false;
+
+                        });
+
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
 
         // function to handle submitting the form
         $scope.submitComment = function() {

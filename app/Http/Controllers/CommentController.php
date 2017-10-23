@@ -19,8 +19,12 @@ class CommentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
+		 $validatedData = Request::validate([
+        'title' => 'required',
+        'body' => 'required'
+    ]);
 		Comment::create(array(
 			'author' => Request::get('author'),
 			'body' =>  Request::get('body'), 
@@ -28,9 +32,26 @@ class CommentController extends Controller {
 			'date' =>  Request::get('date') 
 		));
 
-		return \Response::json(array('success' => true));
+		
 	}
+ /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id)
+    {
+	$comment = Comment::find($id);
+    $comment->title = Input::json('title');
+    $comment->body = Input::json('body');
+    $comment->author =  Input::json('author');
+    $comment->date = date("Y/m/d");
+    $comment->push();
 
+		return \Response::json(array('success' => true));
+    }
 	/**
 	 * Return the specified resource using JSON
 	 *

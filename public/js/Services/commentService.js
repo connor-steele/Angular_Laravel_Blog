@@ -19,7 +19,17 @@ angular.module('commentService', [])
             },
             destroy : function(id) {
                 return $http.delete('api/comments/' + id);
+            },
+
+            update : function(commentData) {
+                    return $http({
+                    method: 'PUT',
+                    url: 'api/comments/',
+                    headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+                    data: $.param(commentData)
+                });
             }
+
         }
 
     });
