@@ -21,6 +21,7 @@
         <script src="js/services/commentService.js"></script> <!-- load our service -->
         <script src="js/app.js"></script> <!-- load our application -->
 
+
 </head> 
 <!-- declare our angular app and controller --> 
 <body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-14">
@@ -43,7 +44,14 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Author</label>
-                 <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="">
+                 <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="your name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Author</label>
+                <input min="today" type="date" class="form-control input-sm" name="date" ng-model="commentData.date" placeholder="your name">
+            </div>
+            <div ng-app ng-controller="Ctrl">
+       <!--          {{datetime | date:'yyyy-MM-dd'}} -->
             </div>
                 <!-- SUBMIT BUTTON -->
                 <div class="form-group text-right">   
@@ -79,7 +87,7 @@
                         <!-- <td><button type="button" ng-click="addToCart(comment)">Add to cart</button></td> -->
                         <label>{{chk.label}}</label>
                     </div>
-                    <div class="delete_these" ng-show="deleteBatch()">
+                    <div style="display:none;" class="delete_these" ng-show="deleteBatch()">
                         {{ comment.id }}
                     </div>
 
@@ -92,7 +100,8 @@
             <td>{{ comment.author }}</td>
             <td>{{ comment.date }}</td>
             <td> 
-            <button data-toggle="modal" ng-click="edit(value.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
+
+            <button data-toggle="modal" ng-click="updateComment(comment.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
             <button class="btn btn-danger" ng-click="deleteComment(comment.id)">Delete</button>
             </td>
         </tr>
@@ -118,6 +127,7 @@
 <td><button type="button" ng-click="addToCart(comment)">Add to cart</button></td>
         </tr>
        </table> -->
+       <div style="display: none">
      <h2>Batch Delete</h2>
         <div style="border: 1px solid blue;">
         </div>
@@ -140,10 +150,34 @@
             <td>{{ comment.date }}</td>
         </tr>
        </table>
-        <button class="btn btn-danger" ng-click="deleteAllSelectedComments(myCartItems)">BATCH-DELETE</button>
+
+   </div>
+           <button class="btn btn-danger" ng-click="deleteAllSelectedComments(myCartItems)">BATCH-DELETE</button>
 </div>
 
+
            
+<!-- <form style="padding:10px" ng-controller="mainController">
+    <div class="form-group">
+        <label for="ProductName">Title</label>
+        <input type="text" class="form-control" placeholder="{{updateDate.title}}" ng-model="commentData.title" required>
+    </div>
+    <div class="form-group">
+        <label for="company">Body</label>
+        <input type="text" class="form-control" placeholder="{{comment.body}}" ng-model="commentData.body" required>
+    </div>
+    <div class="form-group">
+        <label for="company">Author</label>
+        <input type="text" class="form-control" placeholder="{{comment.author}}" ng-model="commentData.author" required>
+    </div>
+    <div class="form-group">
+        <label for="company">Quantit</label>
+        <input type="text" class="form-control" placeholder="{{product.quantity}}" ng-model="quantity" required>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="update()">Save updated data</button>
+    <a href="#/viewproduct" class="btn btn-danger">Cancel</a>
+    <h1 ng-if="successMessage == 0">Great Data is Updated!</h1>
+</form> -->
 
 </div> 
 </body> 
