@@ -88,24 +88,13 @@ angular.module('mainCtrl', [])
         .success(function(data) {
         angular.forEach(data, function(value, key) {
             if (value.id == id) {
-                value.id = id;
-                value.title="new title";
-                value.body= "new body";
-                value.author = "Connor";
                 console.log(value);
             }
+
         });
-
-
-// expect(log).toEqual(['name: misko', 'gender: male']
-                    
-            // console.log(data);
             $scope.comments = data;
             $scope.loading = false;
         });
-        // console.log($scope.comment);
-        // console.log(Comment.author);
-            // console.log(key . value)
 
     }
 

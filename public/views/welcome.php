@@ -101,7 +101,7 @@
             <td>{{ comment.date }}</td>
             <td> 
 
-            <button data-toggle="modal" ng-click="updateComment(comment.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
+            <button data-toggle="modal" ng-click="updateComment(comment.id)" class="btn btn-primary">Edit</button>
             <button class="btn btn-danger" ng-click="deleteComment(comment.id)">Delete</button>
             </td>
         </tr>

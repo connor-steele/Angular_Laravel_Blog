@@ -42,6 +42,18 @@ class CommentController extends Controller {
 		return \Response::json(Comment::find($id));
 	}
 
+    public function update(Request $request,$id)
+    {
+    	$comment= Comment::get($id);
+		Comment::PUT(array(
+		'author' => Request::get('author'),
+		'body' =>  Request::get('body'), 
+		'title' =>  Request::get('title'), 
+		'date' =>  Request::get('date') 
+	));
+	// 	$comment->fill($input)->save();
+        return \Response::json(array('success' => true));
+    }
 	/**
 	 * Remove the specified resource from storage.
 	 *
