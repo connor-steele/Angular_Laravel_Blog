@@ -3,7 +3,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> <!-- load bootstrap via cdn -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-      <link rel="stylesheet" href="css/app.css">
     <!-- JS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
@@ -16,17 +15,15 @@
 
 <!-- declare our angular app and controller -->
 <body class="container" ng-app="commentApp" ng-controller="mainController"> <div class="col-md-14">
-  <div class="header-section header-alt row">
-			<header id="site-header" class="col-sm-4 col-xs-12 hidden-xs rsrc-header text-left" itemscope="" role="banner">
-			     <div class="rsrc-header-text">
-			          <h1 class="site-title" itemprop="headline"><a itemprop="url" href="https://ceylongems.site/" title="Laravel Angular Blog" rel="home">Laravel Angular Blog</a></h1>
-				   </div>
-		</header>
-
-      <div class="text-right col-sm-14" id="myTopnav">
-      	<h4 class="site-desc" itemprop="description">Wholesale and Manufacturer of Exemplary Blog's</h4>
-        <p>Since 1992</p>
-      </div>
+    <!-- PAGE TITLE =============================================== -->
+    <div class="page-header">
+        <h2>Laravel and Angular Single Page Blog</h2>
+        <h4>Advanced Interview Material</h4>
+    </div>
+    <div class="topnav" id="myTopnav">
+  <a href="#index">Home</a>
+  <a href="#welcome">posts</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 
   <div class="row">
@@ -128,6 +125,16 @@
   <button class="btn btn-danger" ng-click="deleteAllSelectedComments(myCartItems)">BATCH-DELETE</button>
 </div>
 </div>
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
 
 </body>
 </html>
