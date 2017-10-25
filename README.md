@@ -1,3 +1,16 @@
+## To Install
+<p>composer install</p>
+<p>Update .env</p>
+<p>Update config/database.php</p>
+<p>php artisan migrate
+<p>php artisan db:seed</p>
+<p>PHP artisan serve</p>
+
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
